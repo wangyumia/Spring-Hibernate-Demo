@@ -5,6 +5,7 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,7 +24,7 @@ public class User {
 	private String address;
 	private String email;
 	private String password;
-	private Set orderSet = new HashSet<Order>();
+	private Set<Order> orderSet = new HashSet<Order>();
 	private ShoppingCart shoppingCart;
 	private Set logSet = new HashSet<Log>();
 	@Id
@@ -60,9 +61,8 @@ public class User {
 		this.email = email;
 	}
 
-	@OneToMany(mappedBy="user", targetEntity=Order.class, 
-	        cascade=CascadeType.ALL)
-	public Set getOrderSet() {
+	@OneToMany(mappedBy="user", targetEntity=Order.class,  cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	public Set<Order> getOrderSet() {
 		return orderSet;
 	}
 	public void setOrderSet(Set orderSet) {
@@ -78,7 +78,7 @@ public class User {
 		this.logSet = logSet;
 	}
 	@OneToOne(cascade=CascadeType.ALL) 
-	@PrimaryKeyJoinColumn(name="ID") 
+	@PrimaryKeyJoinColumn(name="id") 
 	public ShoppingCart getShoppingCart() {
 		return shoppingCart;
 	}

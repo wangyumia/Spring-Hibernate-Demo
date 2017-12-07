@@ -1,5 +1,8 @@
 package com.bear.bookonline.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
@@ -21,6 +25,7 @@ public class Book {
 	private double price;
 	private String picture;
 	private BookDetail bookDetail;
+	private Set cartItemSet = new HashSet<CartItem>();
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public int getId() {
@@ -62,13 +67,19 @@ public class Book {
 		this.picture = picture;
 	}
 	@OneToOne(cascade=CascadeType.ALL) 
-	@PrimaryKeyJoinColumn(name="ID") 
+	@PrimaryKeyJoinColumn(name="bookid") 
 	public BookDetail getBookDetail() {
 		return bookDetail;
 	}
 	public void setBookDetail(BookDetail bookDetail) {
 		this.bookDetail = bookDetail;
 	}
-	
+	@OneToMany(mappedBy="book",targetEntity=CartItem.class,cascade=CascadeType.ALL)
+	public Set getCartItemSet() {
+		return cartItemSet;
+	}
+	public void setCartItemSet(Set cartItemSet) {
+		this.cartItemSet = cartItemSet;
+	}
 	
 }

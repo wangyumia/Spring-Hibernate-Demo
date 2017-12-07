@@ -1,6 +1,8 @@
 package com.bear.bookonline.book.dao;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.annotation.Resource;
 
@@ -12,6 +14,11 @@ import org.springframework.stereotype.Repository;
 import com.bear.bookonline.entity.Book;
 import com.bear.bookonline.entity.BookDetail;
 import com.bear.bookonline.entity.BookType;
+import com.bear.bookonline.entity.CartItem;
+import com.bear.bookonline.entity.Order;
+import com.bear.bookonline.entity.OrderDetail;
+import com.bear.bookonline.entity.ShoppingCart;
+import com.bear.bookonline.entity.User;
 
 @Repository
 /**
@@ -75,10 +82,48 @@ public class BookDaoImpl {
 	    	q.setParameter(0,bookname);
 	    	return q.list();
 	    }
+	   
 	   public BookDetail findAllDetail1(int bookid) {
 		   return this.sessionFactory.getCurrentSession().get(BookDetail.class,bookid);
 				   
 	   }
-	   
+	   public void saveShopping(User user,int id) {
+			Session session = sessionFactory.getCurrentSession();
+			Order order = null;
+			if(user.getOrderSet().size()<=0) {
+				order = new Order();
+			}else {
+					Set<Order> orderset = user.getOrderSet();
+					for(Order o :orderset) {
+						order = o;
+					}
+			}
+			//建立用户和订单之间的联系
+			order.setUser(user);
+			user.getOrderSet().add(order);
+			session.update(user);
+			session.save(order);
+			BookDetail bookdetail = this.findAllDetail1(id);
+			OrderDetail orderdetail = new OrderDetail();
+			orderdetail.setUsername(user.getUsername());
+			orderdetail.setBookname(bookdetail.getBookname());
+			orderdetail.setBookcount(bookdetail.getBookcount());
+			orderdetail.setBookprice(bookdetail.getBookprice());
+			
+			//建立order与orderdetail的关联
+			orderdetail.setOrder(order);
+			order.getOrderDetailSet().add(orderdetail);
+			
+			session.save(orderdetail);
+			session.update(order);
+			
+	}
+	public void deleteByOrderDetail(OrderDetail od) {
+		Session session = this.sessionFactory.getCurrentSession();
+		session.delete(od);
+	}
+	public OrderDetail findByOrderDetailid(int id) {
+		return this.sessionFactory.getCurrentSession().get(OrderDetail.class, id);
+	}
 }
 

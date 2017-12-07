@@ -20,7 +20,7 @@
 	<a class="hiddenanchor" id="tologin"></a>
 	<div id="wrapper">
 		<div id="login" class="animate form">
-			<form  method="post" action="user/userlogin" autocomplete="on">
+			<form  method="post" action="<%=basePath %>userlogin" autocomplete="on">
 				<h1>登录</h1> 
 				<p> 
 					<label for="username" class="uname" data-icon="u" >您的用户名</label>
@@ -45,7 +45,7 @@
 		</div>
 
 		<div id="register" class="animate form">
-			<form method="post" action="user/saveuser" autocomplete="on">
+			<form method="post" action="<%=basePath %>user/saveuser" autocomplete="on">
 				<h1>注册</h1> 
 				<p> 
 					<label for="usernamesignup" class="uname" data-icon="u">用户名</label>

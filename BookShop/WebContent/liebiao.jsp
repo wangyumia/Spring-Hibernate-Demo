@@ -14,7 +14,7 @@
 <script src="<%=basePath %>/js/jquery-1.7.2.min.js"></script>
 <script src="<%=basePath %>/js/main.js"></script>
 <style>
-		.c1{font-size:20px;font-weight:bold;color:green}
+		.c1{font-size:20px;font-weight:bold;color:#000000;}
 		.c3{float:left;width:340px;margin-top:50px;padding-left:20px}
 		.item-li{float:left}
 </style> 
@@ -34,16 +34,16 @@
 <div class="header">
 	<div class="container clearfix">
 		<div class="logo fl">
-			<a href="<%=basePath %>/list.jsp"><img src="<%=basePath %>/images/logo4.png" /></a>
+			<a href="<%=basePath %>/index.jsp"><img src="<%=basePath %>images/61.jpg" /></a>
 		</div>
 		<div class="seacher fl">
 			<form action="<%=basePath %>book/findByBookName" method="post">
 				<input type="text" placeholder="小伙伴，你想找什么?" name="bookname"/><input type="submit" value="搜 索"/>
 			</form>
-			<p>热门搜索：&nbsp;<a href="#">数据结构</a>&nbsp; &nbsp;<a href="#">操作系统</a>&nbsp;&nbsp; <a href="#">青年文摘</a></p>
+			<p>热门搜索：&nbsp;<a href="<%=basePath%>book/findByBookId?bookid=1">数据结构</a>&nbsp; &nbsp;<a href="<%=basePath%>book/findByBookId?bookid=2">操作系统</a>&nbsp;&nbsp; <a href="<%=basePath%>book/findByBookId?bookid=10">青年文摘</a></p>
 		</div>
 		<div class="mm fr clearfix">
-			<a href="<%=basePath %>/liebiao.jsp">我要买</a>
+			<a href="<%=basePath %>book/list1">我要买</a>
 		</div>
 	</div>
 </div>
@@ -51,8 +51,8 @@
 <div class="list-main">
 	<div class="container">
 		<div class="bread" style="margin-bottom: 0;">当前位置：
-			<a href="<%=basePath %>list.jsp">首页</a> >
-			<a href="<%=basePath %>liebiao.jsp">列表</a>
+			<a href="<%=basePath %>book/list1">列表</a> >
+			
 		</div>
 		<ul class="select">
 			

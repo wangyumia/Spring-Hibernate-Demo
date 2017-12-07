@@ -2,12 +2,14 @@ package com.bear.bookonline.book.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -18,10 +20,15 @@ import com.bear.bookonline.book.service.BookServiceImpl;
 import com.bear.bookonline.entity.Book;
 import com.bear.bookonline.entity.BookDetail;
 import com.bear.bookonline.entity.BookType;
+import com.bear.bookonline.entity.CartItem;
+import com.bear.bookonline.entity.Order;
+import com.bear.bookonline.entity.OrderDetail;
 import com.bear.bookonline.entity.Page;
+import com.bear.bookonline.entity.ShoppingCart;
+import com.bear.bookonline.entity.User;
 
 @Controller
-@RequestMapping("/book")
+@RequestMapping("book")
 public class BookControllerImpl {
 	@Resource
 	private BookServiceImpl bookServiceImpl;
@@ -66,23 +73,30 @@ public class BookControllerImpl {
 	}
 	
 	@RequestMapping("/addBought")
-	public String findByBookId(Model model,@RequestParam(value="bookid") int bookid,HttpSession session) {
-		List shoppingCartList = (List)session.getAttribute("shoppingCartList");
-		if(shoppingCartList == null) {
-			shoppingCartList = new ArrayList<>();
-		}
-		BookDetail bd = this.bookServiceImpl.findAllDetail1(bookid);
-		shoppingCartList.add(bd);
-		session.setAttribute("shoppingCartList", shoppingCartList);
-		return "bought";
-		}
-	@RequestMapping("/deleteBought")
-	public String findByBookId(@RequestParam("bookid") int bookid,HttpSession session) {
-		List scList = (List)session.getAttribute("scList");
-		BookDetail bd = this.bookServiceImpl.findAllDetail1(bookid);
-		scList.remove(bd);
-		session.setAttribute("scList", scList);
-		return "list";
+	public String findByBookid(Model model,@RequestParam(value="bookid") int id,HttpSession session) {
+		User user = (User)session.getAttribute("user");
+		this.bookServiceImpl.saveShopping(user, id);
+		Set<Order> shoppingCartSet = (Set<Order>)session.getAttribute("shoppingcart");
+		session.setAttribute("shoppingCartSet",shoppingCartSet);
+		return "redirect:list1";
 	}
+	@RequestMapping("/delete")
+	public String findByBookId(@RequestParam("orderdetailid") int orderdetailid,HttpSession session) {
+		User user = (User)session.getAttribute("user");
+		Set<Order> orderSet = user.getOrderSet();
+		for(Order o:orderSet) {
+			for(OrderDetail od : o.getOrderDetailSet()) {
+				if(od.getOrderDetailid() == orderdetailid) {
+					o.getOrderDetailSet().remove(od);
+				}
+			}
+		}
+		OrderDetail ord = this.bookServiceImpl.findByOrderDetailid(orderdetailid);
+		this.bookServiceImpl.deleteByOrderDetail(ord);
+		Set<Order>shoppingCartSet = user.getOrderSet();
+		session.setAttribute("shoppingCartSet", shoppingCartSet);
+		return "bought";
+	}
+	
 }
 

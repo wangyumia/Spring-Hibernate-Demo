@@ -3,6 +3,7 @@ package com.bear.bookonline.user.controller;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,22 +14,25 @@ import com.bear.bookonline.entity.User;
 import com.bear.bookonline.user.service.UserRegistServiceImpl;
 
 @Controller
-@RequestMapping("user")
+
 public class UserLoginController {
 	@Resource
 	private UserRegistServiceImpl userRegistServiceImpl;
-	@RequestMapping("/userlogin")
-	public String loginUser(Model model,@RequestParam("username") String name,@RequestParam("password") String pwd) {
+	@RequestMapping("userlogin")
+	public String loginUser(Model model,@RequestParam("username") String name,@RequestParam("password") String pwd,HttpSession session) {
+		session.removeAttribute("shoppingCartSet");
 		List<User> userlist = this.userRegistServiceImpl.listAllUser();
 		for(int i = 0 ;i < userlist.size();i++) {
-			if(((userlist.get(i)).getUsername()).equals(name)) {
+			if(((userlist.get(i)).getUsername()).equals(name)&&userlist.get(i).getPassword().equals(pwd)) {
 				model.addAttribute("username", name);
 				model.addAttribute("password", pwd);
-				return "list";
+				session.setAttribute("user",userlist.get(i));
+				session.setAttribute("shoppingcart",userlist.get(i).getOrderSet());
+				return "redirect:book/list1";
 			}
 		}
-		model.addAttribute("error", "该用户不存在，请进行注册！");
 		return "login";
+		
 	}
 
 }

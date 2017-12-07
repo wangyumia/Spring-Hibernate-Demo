@@ -97,16 +97,16 @@
 <div class="header">
 	<div class="container clearfix">
 		<div class="logo fl">
-			<a href="<%=basePath %>list.jsp"><img src="images/logo4.png" alt=""/></a>
+			<a href="<%=basePath %>/index.jsp"><img src="<%=basePath %>images/61.jpg" /></a>
 		</div>
 		<div class="seacher fl">
 			<form action="<%=basePath %>book/findByBookName" method="post">
 				<input type="text" placeholder="小伙伴，你想找什么?" name="bookname"/><input type="submit" value="搜 索"/>
 			</form>
-			<p>热门搜索：&nbsp;<a href="#">数据结构</a>&nbsp; &nbsp;<a href="#">操作系统</a>&nbsp;&nbsp; <a href="#">青年文摘</a></p>
+			<p>热门搜索：&nbsp;<a href="<%=basePath%>book/findByBookId?bookid=1">数据结构</a>&nbsp; &nbsp;<a href="<%=basePath%>book/findByBookId?bookid=2">操作系统</a>&nbsp;&nbsp; <a href="<%=basePath%>book/findByBookId?bookid=10">青年文摘</a></p>
 		</div>
 		<div class="mm fr clearfix">
-			<a href="<%=basePath %>liebiao.jsp">我要买</a>
+			<a href="<%=basePath %>book/list1">我要买</a>
 		</div>
 	</div>
 </div>
@@ -114,7 +114,7 @@
 <div class="help-wrap">
 	<div class="container clearfix">
 		<div class="bread">当前位置：
-			<a href="<%=basePath %>list.jsp">首页</a> 
+			<a href="<%=basePath %>book/list1">首页</a> 
 			<a href="<%=basePath %>member.jsp">个人中心</a> 
 			<a href="<%=basePath %>edit.jsp">编辑发布</a>
 		</div>

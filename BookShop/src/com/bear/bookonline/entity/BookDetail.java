@@ -26,11 +26,7 @@ public class BookDetail {
 	private Book book;
 	@Id
 	@GeneratedValue(generator="foreign")    
-	@GenericGenerator(name="foreign",
-	       strategy="foreign",     
-	    	       parameters={@Parameter(
-	    	    	       name="property",value="book")})
-
+	@GenericGenerator(name="foreign", strategy="foreign",  parameters={@Parameter(name="property",value="book")})
 	public int getBookId() {
 		return bookid;
 	}

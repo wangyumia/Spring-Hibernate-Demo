@@ -95,13 +95,13 @@ input{ outline:none; border:none;}
 	box-sizing: border-box;
 }
 .seacher input[type="text"]{
-	border: 3px solid #008080;
+	border: 3px solid #000000;
 	width: 420px;
 }
 .seacher input[type="submit"]{
 	color: white;
 	width: 100px;
-	background:#46B448 ;
+	background:#000000 ;
 	cursor: pointer;
 }
 .seacher p a{
@@ -114,14 +114,14 @@ input{ outline:none; border:none;}
 	width: 80px;
 	height: 40px;
 	border-radius: 15px;
-	border: #80ff80solid 1px;
+	border: #80ff80 solid 1px;
 	line-height: 40px;
 	float: left;
 	margin-left: 15px;
 	font-family: 微软雅黑;
 	font-size: 18px;
-	background: #FFF4EE;
-	color: #FF7F03;
+	background: #000000;
+	color: #ffffff;
 	text-align: center;
 }
 .mm a:hover {
@@ -417,11 +417,6 @@ ul.two li{
 	font-size: 16px;
 	line-height: 40px;
 }
-
-.attr p:first-child,.attr p:first-child span{
-	font-size: 20px;
-}
-
 a.pay{
 	height: 47px;
 	line-height: 47px;
@@ -986,11 +981,11 @@ body,jsp{
 .select .select-list{border-bottom:#eee 1px dashed}
 .select dl{zoom:1;position:relative;line-height:24px;}
 .select dl:after{content:" ";display:block;clear:both;height:0;overflow:hidden}
-.select dt{width:100px;margin-bottom:5px;position:absolute;top:0;left:-100px;text-align:right;color:#666;height:24px;line-height:24px}
-.select dd{float:left;display:inline;margin:0 0 5px 5px;}
+.select dt{width:100px;margin-bottom:5px;position:absolute;top:0;left:-160px;text-align:right;color:#666;height:24px;line-height:24px}
+.select dd{float:left;display:inline;margin:0 0 5px 5px;color:black;}
 .select dd.hide{display:none;}
-.select a{display:inline-block;white-space:nowrap;height:24px;padding:0 10px;text-decoration:none;color:#039;border-radius:2px;}
-.select a:hover{color:#f60;background-color:#f3edc2}
+.select a{display:inline-block;white-space:nowrap;height:24px;padding:0 10px;text-decoration:none;color:#000000;border-radius:2px;}
+.select a:hover{color:#000040;background-color:#f3edc2}
 .select .selected a{color:#fff;background-color:#f60}
 .select-result dt{font-weight:bold}
 .select-no{color:#999}

@@ -12,6 +12,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="book/list1">查看</a>
+	<%
+		response.sendRedirect("book/list1");
+	%>
 </body>
 </html>

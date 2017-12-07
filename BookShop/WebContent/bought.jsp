@@ -10,16 +10,17 @@
 
 <head>
     <meta charset="UTF-8">
-	<link rel="stylesheet" href="<%=basePath %>/css/index.css"/>
-	<link rel="stylesheet" href="<%=basePath %>/css/font-awesome.min.css"/>
-	<script src="<%=basePath %>/js/main.js"></script>
-	<title>易书网</title>
+	<link rel="stylesheet" href="<%=basePath %>css/index.css"/>
+	<link rel="stylesheet" href="<%=basePath %>css/font-awesome.min.css"/>
+	<script src="<%=basePath %>js/main.js"></script>
+	<title>IBOOK</title>
+	<style>
+		.attr{height:30px;margin-left:500px;width:30px;font-size:15px;color:#999;}
+		.attr1{height:30px;padding-left:820px;width:30px;font-size:15px;color:#999;float:left;margin-top:-30px;}
+		
+	</style>
 </head>
-<style>
-	.help-main p {
-		line-height: 50px;
-	}
-</style>
+
 <body >
 
 <div class="top" id="item4">
@@ -36,16 +37,16 @@
 <div class="header">
 	<div class="container clearfix">
 		<div class="logo fl">
-			<a href="<%=basePath %>list.jsp"><img src="<%=basePath %>images/logo4.png" alt=""/></a>
+			<img src="<%=basePath %>images/61.jpg" /></a>
 		</div>
 		<div class="seacher fl">
 			<form action="<%=basePath %>book/findByBookName" method="post">
 				<input type="text" placeholder="小伙伴，你想找什么?" name="bookname"/><input type="submit" value="搜 索"/>
 			</form>
-			<p>热门搜索：&nbsp;<a href="#">数据结构</a>&nbsp; &nbsp;<a href="#">操作系统</a>&nbsp;&nbsp; <a href="#">青年文摘</a></p>
+			<p>热门搜索：&nbsp;<a href="<%=basePath%>book/findByBookId?bookid=1">数据结构</a>&nbsp; &nbsp;<a href="<%=basePath%>book/findByBookId?bookid=2">操作系统</a>&nbsp;&nbsp; <a href="<%=basePath%>book/findByBookId?bookid=10">青年文摘</a></p>
 		</div>
 		<div class="mm fr clearfix">
-			<a href="<%=basePath %>liebiao.jsp">我要买</a>
+			<a href="<%=basePath %>book/list1">我要买</a>
 		</div>
 	</div>
 </div>
@@ -53,7 +54,7 @@
 <div class="help-wrap">
 	<div class="container clearfix">
 		<div class="bread">当前位置：
-			<a href="<%=basePath %>list.jsp">首页</a> >
+			<a href="<%=basePath %>book/list1">首页</a> >
 			<a href="<%=basePath %>member.jsp">个人中心</a> >
 			<a href="<%=basePath %>bought.jsp">已买书籍</a>
 		</div>
@@ -87,49 +88,39 @@
 			<div class="help-main">
 				<div class="product-item clearfix">
 					<div class="name fl">
-						<span style="margin-left: 200px;">书名</span>
+						<span style="margin-left: 200px;font-family: Microsoft Yahei,Verdana,Arial;color: #999;font-size:15px;">书名</span>
 					</div>
-					
-					<div class="attr fr">
-						<ul class="clearfix">
-							<li><p style="font-size:15px;padding-left:-200px;width:50px;padding-bottom:10p;:">价格</p></li>
-							
-							<li style="width: 110px">状态</li>
-						</ul>
+					<div class="attr">
+						<p>价格</p>
+					</div>
+					<div class="attr1">
+						<p>状态</p>
 					</div>
 				</div>
-				<c:forEach items="${shoppingCartList}" var="d">
+				<c:forEach items="${shoppingCartSet}" var="s">
+				<c:forEach items="${s.orderDetailSet}" var="o">
 				<div class="pro">
 					<div class="product-attr">
 						<div class="product-name fl">
-							<div class="pic-thumb fl"><a href="<%=basePath %>detail.jsp"  ><img  class="middle" src="${d.bookimg1 }"></a></div>
+							<div class="pic-thumb fl"><a href="<%=basePath %>detail.jsp"><img  class="middle" src="${o.bookimg1 }"></a></div>
 							<div class="product-title fl">
-								<a href="<%=basePath %>detail.jsp" class="ellipsis"><p style="margin-left:100px;">${d.bookname}</p></a><br>
+								<a href="<%=basePath %>detail.jsp" class="ellipsis"><p style="margin-left:100px;">${o.bookname}</p></a><br>
 								
 							</div>
 						</div>
 						<div class="product-price fr">
 							<ul class="clearfix">
-								<li><p style="margin-left:-180px;margin-top:20px">${d.bookprice}</p></li>
+								<li><p style="margin-left:-180px;margin-top:20px">${o.bookprice}</p></li>
 								
 								<li class="edit" style="width: 110px">
-									<span class="cancel"><a href="<%=basePath %>book/deleteBought?bookid=${d.bookid}">取消交易</a></span>
+									<span class="cancel"><a href="<%=basePath %>book/delete?orderdetailid=${o.orderDetailid}">取消交易</a></span>
 								</li>
 							</ul>
 						</div>
 					</div>
 				</div>
-			</c:forEach>
-				<div class="page clearfix">
-					<a href="#">首页</a>
-					<a href="#">上一页</a>
-					<a class="bg-blue" href="#">1</a>
-					<a href="#">2</a>
-					<a href="#">3</a>
-					<a href="#">4</a>
-					<a href="#">下一页</a>
-					<a href="#">尾页</a>
-				</div>
+				</c:forEach>
+				</c:forEach>
 			</div>
 		</div>
 	</div>

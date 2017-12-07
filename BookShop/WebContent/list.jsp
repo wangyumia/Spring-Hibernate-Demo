@@ -48,7 +48,7 @@
 <div class="header">
 	<div class="container clearfix">
 		<div class="logo fl">
-			<a href="<%=basePath %>/index.jsp"><img src="<%=basePath %>images/logo4.png" /></a>
+			<img src="<%=basePath %>images/61.jpg" /></a>
 		</div>
 		<div class="seacher fl">
 			
@@ -57,20 +57,20 @@
 				<input type="text" name="bookname" placeholder="小伙伴，你想找什么?"/><input type="submit" value="搜 索"/>
 			</form>
 			
-			<p>热门搜索：&nbsp;<a href="#">数据结构</a>&nbsp; &nbsp;<a href="#">操作系统</a>&nbsp;&nbsp; <a href="#">青年文摘</a></p>
+			<p>热门搜索：&nbsp;<a href="<%=basePath%>book/findByBookId?bookid=1">数据结构</a>&nbsp; &nbsp;<a href="<%=basePath%>book/findByBookId?bookid=2">操作系统</a>&nbsp;&nbsp; <a href="<%=basePath%>book/findByBookId?bookid=10">青年文摘</a></p>
+			
 		</div>
 		<div class="mm fr clearfix">
-			<a href="<%=basePath %>/list.jsp">我要买</a>
-			<a href="<%=basePath %>/publish.jsp">我要卖</a>
+			<a href="<%=basePath %>book/list1">我要买</a>
 		</div>
 	</div>
 </div>
 <div class="banner container">
 	<div class="clearfix">
 		<div class="about fl">
-			<h1>易书网</h1>
-			<img src="<%=basePath %>images/logo9.png" alt=""/>
-			<p><span>易书网</span>是一个网上书商城。力求打造网上最大的中文图书借换系统二手书交换系统力求打造是是网上最大的中文图书借换系统二手书交换系统。易书网来了,让爱书的你花极小的支出(1到2元)就可以读到你喜欢的书且没有后顾之忧哦！</p>
+			<h1>IBOOK</h1>
+			<img src="<%=basePath %>images/64.jpg" alt=""/>
+			<p><span>IBOOK</span>是一个网上书城。是一个专为爱阅读的people精心做成的网站。它不仅是出版发行部门开拓图书市场，开通货源渠道的驿站，更是广大读者朋友读书、选书、购书的最佳场所，傲然矗立在图书领域，成为东北乃至更广大地域走向知识经济新时代的桥梁和纽带。</p>
 		</div>
 		<div id="fsD1" class="focus fl">
 			<div id="D1pic1" class="fPic">
@@ -126,17 +126,14 @@
 	</div>
 <div class="list-main">
 	<div class="container">
-		<div class="bread" style="margin-bottom: 0;">当前位置：
-			<a href="<%=basePath %>list.jsp">首页</a> >
-			<a href="<%=basePath %>liebiao.jsp">列表</a>
+		<div class="bread" style="margin-bottom: 0;">
+			<h2>当前位置：<a href="<%=basePath %>book/list1">首页</a></h2>	 
 		</div>
 		<ul class="select">
-			
 			<li class="select-list">
 				<dl id="select3">
 					<dt>类别：</dt>
-					
-					<dd><a href="<%=basePath %>book/findByTypeid?typeid=1">小说</a></dd>
+					<dd style="color:black;"><a href="<%=basePath %>book/findByTypeid?typeid=1">小说</a></dd>
 					<dd><a href="<%=basePath %>book/findByTypeid?typeid=2">教科书</a></dd>
 					<dd><a href="<%=basePath %>book/findByTypeid?typeid=3">漫画书</a></dd>
 					<dd><a href="<%=basePath %>book/findByTypeid?typeid=4">杂志</a></dd>
@@ -145,16 +142,16 @@
 			
 			<li class="select-result">
 				<dl>
-					<dt>已选条件：</dt>
+					<dt style="margin-left:20px;">已选条件：</dt>
 					<dd class="select-no">暂时没有选择过滤条件</dd>
 				</dl>
 			</li>
 		</ul>
 		<div class="tabs book clearfix">
 			<div class="a1">
-    			<c:forEach items="${list }" var="book" varStatus="status">  
+    			<c:forEach items="${list}" var="book" varStatus="status">  
     				<div class="a2">
-				 		<div><a href="#"><img alt="无法显示该图片" src="${book.picture }"></a></div>
+				 		<div><a href="<%=basePath%>book/findByBookId?bookid=${book.id}"><img alt="无法显示该图片" src="${book.picture }"></a></div>
 				 		<div class="a3">${book.name }</div>
 						<div class="a3">${book.price }</div>
 						<div class="a3">${book.publisher }</div>

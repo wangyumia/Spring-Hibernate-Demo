@@ -1,36 +1,36 @@
 package com.bear.bookonline.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 
 @Entity
 @Table(name="shoppingcart")
 public class ShoppingCart {
 	private int id;
-	private String name;
-	private double price;
-	private int count;
 	private User user;
+	private double bookprice;
+	private Set CartItemSet =new HashSet<CartItem>();
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(generator="foreign")    
+	@GenericGenerator(name="foreign",strategy="foreign",parameters={@Parameter(name="property",value="user")})
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	
-	public double getPrice() {
-		return price;
-	}
-	public void setPrice(double price) {
-		this.price = price;
-	}
-	
 	@OneToOne(mappedBy="shoppingCart")
 	public User getUser() {
 		return user;
@@ -38,17 +38,20 @@ public class ShoppingCart {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	public int getCount() {
-		return count;
+	@OneToMany(mappedBy="shoppingCart", targetEntity=CartItem.class, cascade=CascadeType.ALL)
+	
+	public Set getCartItemSet() {
+		return CartItemSet;
 	}
-	public void setCount(int count) {
-		this.count = count;
+	public void setCartItemSet(Set cartItemSet) {
+		CartItemSet = cartItemSet;
 	}
-	public String getName() {
-		return name;
+	public double getBookprice() {
+		return bookprice;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setBookprice(double bookprice) {
+		this.bookprice = bookprice;
 	}
+	
 	
 }

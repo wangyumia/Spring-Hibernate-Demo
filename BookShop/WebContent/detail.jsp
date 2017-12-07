@@ -16,26 +16,15 @@
 	<script type="text/javascript" src="<%=basePath %>js/mz-packed.js"></script>
 	<title>Document</title>
 	<style>
-		.a1{font-weight:bold;font-size:20px;color:green;margin-bottom:20px;margin-left:20px}
-		.a2{margin-left:20px;width:200px;border: 1px solid #ec0f0f;}
+		.a1{font-weight:bold;font-size:20px;color:#000000;margin-bottom:20px;margin-left:20px}
+		.a2{margin-left:20px;width:200px;border: 1px white;}
 		.aaa{float:left;width:1000px}
 		.aa{width:700px;float:right;margin-top:-320px;}
 		.right{float:left;width:300px}
 		。a22{margin-top:20px;font-size:20px;color:blue}
 		.a6{margin-top:20px;}
 	</style>
-	<script language="text/javascript"> 
-		 var img = document.getElementById('img');
- 		function bigger(){
- 		 img.style.width = '400px';
-  		img.style.height = '400px';
- 		}
- 
- 		function smaller(){
-  		img.style.width = '200px';
- 		 img.style.height = '300px';
- 		}	
-	</script> 
+
 </head>
 <body>
 
@@ -53,16 +42,16 @@
 <div class="header">
 	<div class="container clearfix">
 		<div class="logo fl">
-			<a href="<%=basePath %>list.jsp"><img src="<%=basePath %>images/logo4.png" alt=""/></a>
+			<a href="<%=basePath %>/index.jsp"><img src="<%=basePath %>images/61.jpg" /></a>
 		</div>
 		<div class="seacher fl">
 			<form action="<%=basePath %>book/findByBookName" method="post">
 				<input type="text" placeholder="小伙伴，你想找什么?" name="bookname"/><input type="submit" value="搜 索"/>
 			</form>
-			<p>热门搜索：&nbsp;<a href="#">数据结构</a>&nbsp; &nbsp;<a href="#">操作系统</a>&nbsp;&nbsp; <a href="#">青年文摘</a></p>
+			<p>热门搜索：&nbsp;<a href="<%=basePath%>book/findByBookId?bookid=1">数据结构</a>&nbsp; &nbsp;<a href="<%=basePath%>book/findByBookId?bookid=2">操作系统</a>&nbsp;&nbsp; <a href="<%=basePath%>book/findByBookId?bookid=10">青年文摘</a></p>
 		</div>
 		<div class="mm fr clearfix">
-			<a href="<%=basePath %>liebiao.jsp">我要买</a>
+			<a href="<%=basePath %>book/list1">我要买</a>
 		
 		</div>
 	</div>
@@ -70,7 +59,7 @@
 <div class="main">
 	<div class="container clearfix">
 		<div class="bread">当前位置：
-			<a href="<%=basePath %>list.jsp">首页</a> 
+			<a href="<%=basePath %>book/list1">首页</a> 
 			<a href="<%=basePath %>liebiao.jsp">教材区</a> 
 			<a href="<%=basePath %>detail.jsp">图书详情</a>
 		</div>
@@ -79,17 +68,17 @@
 		<div class="aaa">
 			<input type="hidden" name="bookid" value="${bd.bookid }" />
 			<div class="a1">${bd.bookname}</div>
-			<div class="a2"><img  id="img"  onmouseover="bigger()" onmouseout="smaller()" src="${bd.bookimg1 }"></div>
+			<div class="a2"><img  src="${bd.bookimg1 }"></div>
 		<div class="aa">
-			<div><p style="font-size:15px;margin-top:20px;color:green;font-weight:bold;padding-left:10px">书籍简介</p></div>
+			<div><p style="font-size:15px;margin-top:20px;color:#000000;font-weight:bold;padding-left:10px">书籍简介</p></div>
 			<div><p style="margin-top:20px;text-align:left;padding-left:10px">${bd.introduce}</p></div>
 			<div class="a4">
-				<p style="font-size:15px;margin-top:20px;color:green;font-weight:bold;padding-left:10px">书籍数量&nbsp;&nbsp;&nbsp;&nbsp;${bd.bookcount}</p>&nbsp;&nbsp;
+				<p style="font-size:15px;margin-top:20px;color:#000000;font-weight:bold;padding-left:10px">书籍数量&nbsp;&nbsp;&nbsp;&nbsp;${bd.bookcount}</p>&nbsp;&nbsp;
 				
 			</div>
 			
-			<div class="a5"><p style="font-size:15px;margin-top:20px;color:green;font-weight:bold;padding-left:10px">单价:&nbsp;&nbsp;&nbsp;&nbsp;${bd.bookprice}</p></div>
-			<div><p style="font-size:15px;margin-top:20px;color:green;font-weight:bold;padding-left:10px">总价格：${(bd.bookprice)*(bd.bookcount)}</p></div> 
+			<div class="a5"><p style="font-size:15px;margin-top:20px;color:#000000;font-weight:bold;padding-left:10px">单价:&nbsp;&nbsp;&nbsp;&nbsp;${bd.bookprice}</p></div>
+			<div><p style="font-size:15px;margin-top:20px;color:#000000;font-weight:bold;padding-left:10px">总价格：${(bd.bookprice)*(bd.bookcount)}</p></div> 
 			<div class="a6">
 				<input  style="font-size:15px;color:red;font-weight:bold;padding-left:10px;height:40px;background-color:#FFB6C1;width:180px" type="submit"  value="加入购物车">
 				<input  style="font-size:15px;color:white;font-weight:bold;padding-left:10px;height:40px;background-color:#FF0000;width:180px;margin-left:20px" type="submit"  value="立即购买">

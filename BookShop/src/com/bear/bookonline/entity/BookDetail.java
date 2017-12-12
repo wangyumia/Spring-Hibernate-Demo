@@ -21,8 +21,6 @@ public class BookDetail {
 	private String bookimg1;
 	private String bookimg2;
 	private String bookimg3;
-	private String bookimg4;
-	private String bookaddshoppingcart;
 	private Book book;
 	@Id
 	@GeneratedValue(generator="foreign")    
@@ -81,18 +79,6 @@ public class BookDetail {
 	}
 	public void setBookimg3(String bookimg3) {
 		this.bookimg3 = bookimg3;
-	}
-	public String getBookimg4() {
-		return bookimg4;
-	}
-	public void setBookimg4(String bookimg4) {
-		this.bookimg4 = bookimg4;
-	}
-	public String getBookaddshoppingcart() {
-		return bookaddshoppingcart;
-	}
-	public void setBookaddshoppingcart(String bookaddshoppingcart) {
-		this.bookaddshoppingcart = bookaddshoppingcart;
 	}
 	@OneToOne(mappedBy="bookDetail")
 	public Book getBook() {

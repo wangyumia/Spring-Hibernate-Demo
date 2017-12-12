@@ -15,7 +15,7 @@
 	<script src="<%=basePath %>js/jquery-1.11.2.min.js"></script>
 	<script src="<%=basePath %>js/main.js"></script>
 	<script src="<%=basePath %>js/koala.min.1.5.js"></script>
-	<title>Document</title>
+	<title>首页</title>
 	<style>
 		.swiper-container {
 			width: 1100px;
@@ -27,10 +27,11 @@
 		.fenye{height:80px;width:1000px;margin-top:300px;}
 		.fenye2{font-size:20px}
 		.a2{float:left ;height:100px;width:200px;margin-right:180px;align:center}
-		.a3{font-weight:bold;align:center;padding-left:20px}
+		.a3{font-weight:bold;align:center;padding-left:20px;}
+		.header{    background-color: #5D4B33;padding: 0;position: relative;}
 	</style>  
 </head>
-<body >
+<body style="background:url(<%=basePath %>./images/76.jpg)">
 
 <div class="top" id="item4">
 	<form action="book/list1">
@@ -151,7 +152,7 @@
 			<div class="a1">
     			<c:forEach items="${list}" var="book" varStatus="status">  
     				<div class="a2">
-				 		<div><a href="<%=basePath%>book/findByBookId?bookid=${book.id}"><img alt="无法显示该图片" src="${book.picture }"></a></div>
+				 		<div><a href="<%=basePath%>book/findByBookId?bookid=${book.id}"><img alt="无法显示该图片" src="${book.picture }" style="border: 1px solid #ccc;"></a></div>
 				 		<div class="a3">${book.name }</div>
 						<div class="a3">${book.price }</div>
 						<div class="a3">${book.publisher }</div>

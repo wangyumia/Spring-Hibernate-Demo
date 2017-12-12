@@ -14,19 +14,43 @@
 	<script src="<%=basePath %>js/jquery-1.11.2.min.js"></script>
 	<script src="<%=basePath %>js/main.js"></script>
 	<script type="text/javascript" src="<%=basePath %>js/mz-packed.js"></script>
-	<title>Document</title>
+	<title>Detail</title>
 	<style>
 		.a1{font-weight:bold;font-size:20px;color:#000000;margin-bottom:20px;margin-left:20px}
-		.a2{margin-left:20px;width:200px;border: 1px white;}
+		.a2{margin-left:20px;width:200px;border: 1px white;height:500px;}
+		.b{margin-left:20px;width:200px;}
+		.b1{padding-left:0px;width:60px;height:50px;}
 		.aaa{float:left;width:1000px}
-		.aa{width:700px;float:right;margin-top:-320px;}
+		.aa{width:700px;float:right;margin-top:-560px;padding-left:50px;}
 		.right{float:left;width:300px}
-		。a22{margin-top:20px;font-size:20px;color:blue}
+		.a21{float:left;padding-left:6px;}
 		.a6{margin-top:20px;}
+		.a4{margin-top:20px;}
+		.qty{font-size:15px;color:#5D4B33;font-weight:bold;margin: 15px 10px 0 10px;}
+		.min{width:50px;height:37px;border: 1px solid #ccc;border-radius: 4px;}
 	</style>
-
+	<!-- //Custom Theme files -->
+	<link href="<%=basePath %>css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+	<link href="<%=basePath %>css/style.css" type="text/css" rel="stylesheet" media="all">
+	<!-- js -->
+	<script src="<%=basePath %>js/jquery.min.js"></script>
+	<script type="text/javascript" src="<%=basePath %>js/bootstrap-3.1.1.min.js"></script>
+	<script src="<%=basePath %>js/imagezoom.js"></script>
+	<!-- FlexSlider -->
+	<script defer src="<%=basePath %>js/jquery.flexslider.js"></script>
+	<link rel="stylesheet" href="<%=basePath %>css/flexslider.css" type="text/css" media="screen" />
+	<script>
+		// Can also be used with $(document).ready()
+		$(window).load(function() {
+		  $('.flexslider').flexslider({
+			animation: "slide",
+			controlNav: "thumbnails"
+		  });
+		});
+	</script>
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 </head>
-<body>
+<body style="background:url(<%=basePath %>./images/76.jpg)">
 
 <div class="top" id="item4">
 	<div class="container clearfix">
@@ -68,20 +92,33 @@
 		<div class="aaa">
 			<input type="hidden" name="bookid" value="${bd.bookid }" />
 			<div class="a1">${bd.bookname}</div>
-			<div class="a2"><img  src="${bd.bookimg1 }"></div>
-		<div class="aa">
-			<div><p style="font-size:15px;margin-top:20px;color:#000000;font-weight:bold;padding-left:10px">书籍简介</p></div>
-			<div><p style="margin-top:20px;text-align:left;padding-left:10px">${bd.introduce}</p></div>
-			<div class="a4">
-				<p style="font-size:15px;margin-top:20px;color:#000000;font-weight:bold;padding-left:10px">书籍数量&nbsp;&nbsp;&nbsp;&nbsp;${bd.bookcount}</p>&nbsp;&nbsp;
-				
-			</div>
+			<div class="col-md-4 single-grid">		
+					<div class="flexslider">
+						<ul class="slides">
+							<li data-thumb="${bd.bookimg1}">
+								<div class="thumb-image"> <img src="${bd.bookimg1}" data-imagezoom="true" class="img-responsive"> </div>
+							</li>
+							<li data-thumb="${bd.bookimg2}">
+								 <div class="thumb-image"> <img src="${bd.bookimg2}" data-imagezoom="true" class="img-responsive"> </div>
+							</li>
+							<li data-thumb="${bd.bookimg3}">
+							   <div class="thumb-image"> <img src="${bd.bookimg3}" data-imagezoom="true" class="img-responsive"> </div>
+							</li> 
+						</ul>
+					</div>
+			</div>	
 			
-			<div class="a5"><p style="font-size:15px;margin-top:20px;color:#000000;font-weight:bold;padding-left:10px">单价:&nbsp;&nbsp;&nbsp;&nbsp;${bd.bookprice}</p></div>
-			<div><p style="font-size:15px;margin-top:20px;color:#000000;font-weight:bold;padding-left:10px">总价格：${(bd.bookprice)*(bd.bookcount)}</p></div> 
+		<div class="aa">
+			<div><p style="font-size:15px;color:#5D4B33;font-weight:bold;padding-left:10px">Book Introduction</p></div><br>&nbsp;&nbsp;
+			<div><p style="margin-top:30px;text-align:left;padding-left:10px">${bd.introduce}</p></div>
+			<div class="a4">
+				<p class="qty">Qty :</p><input min="1" type="number" id="quantity" name="quantity" value="1" class="min">	
+			</div>
+			<div class="a5"><p style="font-size:15px;margin-top:30px;color:#5D4B33;font-weight:bold;padding-left:10px">Price:&nbsp;&nbsp;&nbsp;&nbsp;${bd.bookprice}</p></div>
+			<div><p style="font-size:15px;margin-top:30px;color:#5D4B33;font-weight:bold;padding-left:10px">Total Price：${(bd.bookprice)*(bd.bookcount)}</p></div> 
 			<div class="a6">
-				<input  style="font-size:15px;color:red;font-weight:bold;padding-left:10px;height:40px;background-color:#FFB6C1;width:180px" type="submit"  value="加入购物车">
-				<input  style="font-size:15px;color:white;font-weight:bold;padding-left:10px;height:40px;background-color:#FF0000;width:180px;margin-left:20px" type="submit"  value="立即购买">
+				<input  style="font-size:15px;color:red;font-weight:bold;padding-left:10px;height:40px;background-color:#FFB6C1;width:180px;margin-top:30px;" type="submit"  value="ADD TO CART">
+				<input  style="font-size:15px;color:white;font-weight:bold;padding-left:10px;height:40px;background-color:#FF0000;width:180px;margin-left:20px;margin-top:30px;" type="submit"  value="BUY">
 			</div>
 		</div>
 		</div>

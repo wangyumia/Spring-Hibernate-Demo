@@ -125,5 +125,10 @@ public class BookDaoImpl {
 	public OrderDetail findByOrderDetailid(int id) {
 		return this.sessionFactory.getCurrentSession().get(OrderDetail.class, id);
 	}
+	public List<BookDetail> findAllDetail(){
+		Query q = this.sessionFactory.getCurrentSession().createQuery("from BookDetail");
+		return q.list();
+	}
+	
 }
 

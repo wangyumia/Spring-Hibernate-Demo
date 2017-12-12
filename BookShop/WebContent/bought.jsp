@@ -6,7 +6,7 @@
 <%
 		String path = request.getContextPath();
 		String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-	%>
+%>
 
 <head>
     <meta charset="UTF-8">
@@ -15,9 +15,11 @@
 	<script src="<%=basePath %>js/main.js"></script>
 	<title>IBOOK</title>
 	<style>
-		.attr{height:30px;margin-left:500px;width:30px;font-size:15px;color:#999;}
-		.attr1{height:30px;padding-left:820px;width:30px;font-size:15px;color:#999;float:left;margin-top:-30px;}
-		
+		.attr{height:30px;margin-left:200px;width:30px;font-size:15px;color:#999;}
+		.attr1{height:30px;margin-left:200px;width:30px;font-size:15px;color:#999;float:left;margin-top:-30px;}
+		.attr2{height:30px;margin-left:300px;width:50px;font-size:15px;color:#999;float:left;margin-top:-30px;}
+		.attr3{height:30px;margin-left:800px;width:30px;font-size:15px;color:#999;float:left;margin-top:-30px;}
+		.header{background-color: #5D4B33;padding: 0;position: relative;}
 	</style>
 </head>
 
@@ -88,14 +90,21 @@
 			<div class="help-main">
 				<div class="product-item clearfix">
 					<div class="name fl">
-						<span style="margin-left: 200px;font-family: Microsoft Yahei,Verdana,Arial;color: #999;font-size:15px;">书名</span>
+						<span style="margin-left: 100px;font-family: Microsoft Yahei,Verdana,Arial;color: #999;font-size:15px;">书名</span>
 					</div>
 					<div class="attr">
 						<p>价格</p>
 					</div>
 					<div class="attr1">
+						<p>数量</p>
+					</div>
+					<div class="attr2">
+						<p>总价格</p>
+					</div>
+					<div class="attr3">
 						<p>状态</p>
 					</div>
+					
 				</div>
 				<c:forEach items="${shoppingCartSet}" var="s">
 				<c:forEach items="${s.orderDetailSet}" var="o">
@@ -104,14 +113,15 @@
 						<div class="product-name fl">
 							<div class="pic-thumb fl"><a href="<%=basePath %>detail.jsp"><img  class="middle" src="${o.bookimg1 }"></a></div>
 							<div class="product-title fl">
-								<a href="<%=basePath %>detail.jsp" class="ellipsis"><p style="margin-left:100px;">${o.bookname}</p></a><br>
+								<a href="<%=basePath %>detail.jsp" class="ellipsis"><p style="margin-left:5px;">${o.bookname}</p></a><br>
 								
 							</div>
 						</div>
 						<div class="product-price fr">
 							<ul class="clearfix">
-								<li><p style="margin-left:-180px;margin-top:20px">${o.bookprice}</p></li>
-								
+								<li><p style="margin-left:-700px;margin-top:20px;">${o.bookprice}</p></li>
+								<li><p style="margin-left:-600px;margin-top:20px;">${o.bookcount}</li>
+								<li><p style="margin-left:-500px;margin-top:20px;">${o.totalprice}</li>
 								<li class="edit" style="width: 110px">
 									<span class="cancel"><a href="<%=basePath %>book/delete?orderdetailid=${o.orderDetailid}">取消交易</a></span>
 								</li>
@@ -121,6 +131,9 @@
 				</div>
 				</c:forEach>
 				</c:forEach>
+				<div style="padding-left:800px;">
+					<a href="<%=basePath%>book/list1"><input type="submit" value="提交订单" style="background-color:#DA4F49;width:100px;height:40px;"/></a>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -38,5 +38,5 @@ public class UserRegistController {
 		model.addAttribute("user", user);
 		return "login";
 	}
-	
+
 }

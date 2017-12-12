@@ -78,23 +78,39 @@ public class BookControllerImpl {
 		this.bookServiceImpl.saveShopping(user, id);
 		Set<Order> shoppingCartSet = (Set<Order>)session.getAttribute("shoppingcart");
 		session.setAttribute("shoppingCartSet",shoppingCartSet);
+		
+		for(Order order : user.getOrderSet()) {
+			double sum = 0;
+			for(OrderDetail oderdetail : order.getOrderDetailSet()) {
+				sum = sum + oderdetail.getTotalprice();
+				session.setAttribute("totalPrice",sum);
+			}
+		}
 		return "redirect:list1";
 	}
 	@RequestMapping("/delete")
 	public String findByBookId(@RequestParam("orderdetailid") int orderdetailid,HttpSession session) {
 		User user = (User)session.getAttribute("user");
 		Set<Order> orderSet = user.getOrderSet();
-		for(Order o:orderSet) {
-			for(OrderDetail od : o.getOrderDetailSet()) {
-				if(od.getOrderDetailid() == orderdetailid) {
-					o.getOrderDetailSet().remove(od);
+		for(Order order:orderSet) {
+			for(OrderDetail oderDetail : order.getOrderDetailSet()) {
+				if(oderDetail.getOrderDetailid() == orderdetailid) {
+					order.getOrderDetailSet().remove(oderDetail);
 				}
 			}
 		}
-		OrderDetail ord = this.bookServiceImpl.findByOrderDetailid(orderdetailid);
-		this.bookServiceImpl.deleteByOrderDetail(ord);
+		OrderDetail orderDetail = this.bookServiceImpl.findByOrderDetailid(orderdetailid);
+		this.bookServiceImpl.deleteByOrderDetail(orderDetail);
 		Set<Order>shoppingCartSet = user.getOrderSet();
 		session.setAttribute("shoppingCartSet", shoppingCartSet);
+		
+		for(Order order : user.getOrderSet()) {
+			double sum = 0;
+			for(OrderDetail oderdetail : order.getOrderDetailSet()) {
+				sum = sum + oderdetail.getTotalprice();
+				session.setAttribute("totalPrice",sum);
+			}
+		}
 		return "bought";
 	}
 	

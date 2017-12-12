@@ -9,7 +9,7 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>易书网</title>
+<title>Login</title>
 <link rel="stylesheet" type="text/css" href="<%=basePath %>css/index.css" />
 <link rel="stylesheet" type="text/css" href="<%=basePath %>css/animate-custom.css" />
 </head>

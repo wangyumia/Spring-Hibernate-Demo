@@ -62,7 +62,7 @@ public class OrderDetail {
 		return totalprice;
 	}
 	public void setTotalprice(double totalprice) {
-		this.totalprice = totalprice;
+		this.totalprice =(this.bookprice)*(this.bookcount);
 	}
 	@ManyToOne(cascade = CascadeType.MERGE,optional = false,fetch = FetchType.LAZY)
 	@JoinColumn(name="orderid")

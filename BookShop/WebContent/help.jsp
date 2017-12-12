@@ -11,7 +11,10 @@
     <meta charset="UTF-8">
 	<link rel="stylesheet" href="<%=basePath %>css/index.css"/>
 	<script src="<%=basePath %>js/main.js"></script>
-	<title>Document</title>
+	<title>Help</title>
+	<style>
+		.header{    background-color: #5D4B33;padding: 0;position: relative;}
+	</style>
 </head>
 <body >
 
@@ -72,7 +75,7 @@
 					<ul>
 						<li><a href="<%=basePath %>help.jsp">如何买书</a></li>
 						<li><a href="<%=basePath %>help.jsp">如何卖书</a></li>
-						<li><a href="<%=basePath %>help.jsp">修改密码</a></li>
+						<li><a href="<%=basePath %>password.jsp">修改密码</a></li>
 					</ul>
 				</div>
 			</div>

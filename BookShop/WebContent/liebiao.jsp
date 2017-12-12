@@ -9,7 +9,7 @@
 %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>liebiao</title>
 <link rel="stylesheet" href="<%=basePath %>/css/index.css"/>
 <script src="<%=basePath %>/js/jquery-1.7.2.min.js"></script>
 <script src="<%=basePath %>/js/main.js"></script>
@@ -17,9 +17,10 @@
 		.c1{font-size:20px;font-weight:bold;color:#000000;}
 		.c3{float:left;width:340px;margin-top:50px;padding-left:20px}
 		.item-li{float:left}
+		.header{    background-color: #5D4B33;padding: 0;position: relative;}
 </style> 
 </head>
-<body>
+<body style="background:url(<%=basePath %>./images/76.jpg)">
 <div class="top" id="item4">
 	<div class="container clearfix">
 		<ul class="clearfix fr">

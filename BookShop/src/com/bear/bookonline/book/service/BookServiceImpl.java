@@ -83,5 +83,7 @@ public class BookServiceImpl {
      public void deleteByOrderDetail(OrderDetail od) {
     	 this.bookDaoImpl.deleteByOrderDetail(od);
      }
-
+     public List<BookDetail> findAllDetail(){
+    	 return this.bookDaoImpl.findAllDetail();
+     }
 }

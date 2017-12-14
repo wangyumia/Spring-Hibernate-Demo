@@ -1,5 +1,6 @@
 package com.bear.bookonline.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,8 +24,7 @@ public class BookDetail {
 	private String bookimg3;
 	private Book book;
 	@Id
-	@GeneratedValue(generator="foreign")    
-	@GenericGenerator(name="foreign", strategy="foreign",  parameters={@Parameter(name="property",value="book")})
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public int getBookId() {
 		return bookid;
 	}
@@ -80,7 +80,7 @@ public class BookDetail {
 	public void setBookimg3(String bookimg3) {
 		this.bookimg3 = bookimg3;
 	}
-	@OneToOne(mappedBy="bookDetail")
+	@OneToOne(mappedBy="bookDetail",cascade=CascadeType.ALL)
 	public Book getBook() {
 		return book;
 	}

@@ -56,9 +56,11 @@
 	<div class="container clearfix">
 		<ul class="clearfix fr">
 			<li><a href="<%=basePath %>login.jsp#tologin" >登录</a></li>
+			<li><a href="<%=basePath %>adminlogin.jsp#tologin">管理员登录</a></li>
 			<li><a href="<%=basePath %>login.jsp#toregister" >注册</a></li>
 			<li><a href="<%=basePath %>member.jsp">个人中心</a></li>
-			<li><a href="<%=basePath %>bought.jsp" style="border: none">购物车</a></li>
+			<li><a href="<%=basePath %>bought.jsp">购物车</a></li>
+			<li><a href="<%=basePath %>useroff" style="border: none">退出登录</a></li>
 		</ul>
 	</div>
 </div>

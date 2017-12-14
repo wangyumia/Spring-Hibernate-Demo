@@ -6,8 +6,7 @@
 <%
 		String path = request.getContextPath();
 		String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-	%>
-
+%>
 <head>
     <meta charset="UTF-8">
 	<link rel="stylesheet" href="<%=basePath %>css/index.css"/>
@@ -39,9 +38,11 @@
 	<div class="container clearfix">
 		<ul class="clearfix fr">
 			<li><a href="<%=basePath %>login.jsp#tologin" >登录</a></li>
+			<li><a href="<%=basePath %>adminlogin.jsp#tologin">管理员登录</a></li>
 			<li><a href="<%=basePath %>login.jsp#toregister" >注册</a></li>
 			<li><a href="<%=basePath %>member.jsp" >个人中心</a></li>
-			<li><a href="<%=basePath %>bought.jsp" style="border: none">购物车</a></li>
+			<li><a href="<%=basePath %>bought.jsp" >购物车</a></li>
+			<li><a href="<%=basePath %>useroff" style="border: none">退出登录</a></li>
 		</ul>
 	</div>
 </div>
@@ -52,10 +53,8 @@
 			<img src="<%=basePath %>images/61.jpg" /></a>
 		</div>
 		<div class="seacher fl">
-			
 			<form action="<%=basePath %>book/findByBookName" method="post">
-				
-				<input type="text" name="bookname" placeholder="小伙伴，你想找什么?"/><input type="submit" value="搜 索"/>
+					<input type="text" name="bookname" placeholder="小伙伴，你想找什么?"/><input type="submit" value="搜 索"/>
 			</form>
 			
 			<p>热门搜索：&nbsp;<a href="<%=basePath%>book/findByBookId?bookid=1">数据结构</a>&nbsp; &nbsp;<a href="<%=basePath%>book/findByBookId?bookid=2">操作系统</a>&nbsp;&nbsp; <a href="<%=basePath%>book/findByBookId?bookid=10">青年文摘</a></p>
@@ -96,7 +95,6 @@
 					
 				</div>
 			</div>
-
 			<div class="fbg">
 				<div class="D1fBt" id="D1fBt">
 					<a href="javascript:void(0)" class="current"><i>1</i></a>
@@ -110,11 +108,11 @@
 		<div class="help fr">
 			<h2>最新公告</h2>
 			<ul>
-				<li><a href="<%=basePath %>notice-detail.jsp">这是易书网最新公告1</a></li>
-				<li><a href="<%=basePath %>notice-detail.jsp">这是易书网最新公告2</a></li>
-				<li><a href="<%=basePath %>notice-detail.jsp">这是易书网最新公告3</a></li>
-				<li><a href="<%=basePath %>notice-detail.jsp">这是易书网最新公告4</a></li>
-				<li><a href="<%=basePath %>notice-detail.jsp">这是易书网最新公告5</a></li>
+				<li><a href="<%=basePath %>notice-detail.jsp">这是IBOOK最新公告1</a></li>
+				<li><a href="<%=basePath %>notice-detail.jsp">这是IBOOK最新公告2</a></li>
+				<li><a href="<%=basePath %>notice-detail.jsp">这是IBOOK最新公告3</a></li>
+				<li><a href="<%=basePath %>notice-detail.jsp">这是IBOOK最新公告4</a></li>
+				<li><a href="<%=basePath %>notice-detail.jsp">这是IBOOK最新公告5</a></li>
 			</ul>
 			<h2>新手帮助</h2>
 			<ul>
@@ -140,7 +138,6 @@
 					<dd><a href="<%=basePath %>book/findByTypeid?typeid=4">杂志</a></dd>
 				</dl>
 			</li>
-			
 			<li class="select-result">
 				<dl>
 					<dt style="margin-left:20px;">已选条件：</dt>
@@ -157,10 +154,8 @@
 						<div class="a3">${book.price }</div>
 						<div class="a3">${book.publisher }</div>
 					</div>
-			    </c:forEach>  
-			
+			    </c:forEach> 
 			<div class="clearfix"></div>
-			
 				<br>
    					<table class="fenye">
       					 <tr>

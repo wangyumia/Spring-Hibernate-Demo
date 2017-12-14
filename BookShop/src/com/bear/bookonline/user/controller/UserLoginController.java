@@ -18,6 +18,16 @@ import com.bear.bookonline.user.service.UserRegistServiceImpl;
 public class UserLoginController {
 	@Resource
 	private UserRegistServiceImpl userRegistServiceImpl;
+	/**
+	 * 获取到用户在登录界面的username 和password
+	 * 用来和数据库中的数据进行匹配，如果用户名和密码匹配  则跳转到book/list1这个控制器
+	 * 如果没有匹配上，那就是用户名不存在或者密码输入错误，返回到登录界面
+	 * @param model
+	 * @param name
+	 * @param pwd
+	 * @param session
+	 * @return
+	 */
 	@RequestMapping("userlogin")
 	public String loginUser(Model model,@RequestParam("username") String name,@RequestParam("password") String pwd,HttpSession session) {
 		session.removeAttribute("shoppingCartSet");
@@ -33,6 +43,16 @@ public class UserLoginController {
 		}
 		return "login";
 		
+	}
+	/**
+	 * 用户点击退出登录按钮，会执行这个控制器，废弃session会话，执行book/list1控制器，跳转到前台展示界面
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping("useroff")
+	public String useroff(HttpSession session) {
+		session.invalidate();
+		return "redirect:book/list1";
 	}
 
 }

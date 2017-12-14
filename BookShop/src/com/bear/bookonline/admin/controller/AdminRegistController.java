@@ -19,6 +19,17 @@ public class AdminRegistController {
 	@Resource
 	private AdminRegistServiceImpl adminRegistServiceImpl;
 	@RequestMapping("/saveadmin")
+	/**
+	 * 管理员注册  
+	 * 先获取到数据库中的管理员信息，存到adminList列表中
+	 * 再获取到注册界面管理员输入的admin 和adminpassword 
+	 * 如果和数据库中数据一致，则返回到登录界面
+	 *否则将新输入的数据存到数据库中保存，返回到登录界面
+	 * @param model
+	 * @param name
+	 * @param pwd
+	 * @return
+	 */
 	public String addAdmin(Model model,@RequestParam("adminname") String name,@RequestParam("adminpassword") String pwd) {
 		List<Admin> adminList = this.adminRegistServiceImpl.listAllAdmin();
 		model.addAttribute("adminList", adminList);

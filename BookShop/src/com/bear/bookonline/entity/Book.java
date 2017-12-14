@@ -67,7 +67,7 @@ public class Book {
 		this.picture = picture;
 	}
 	@OneToOne(cascade=CascadeType.ALL) 
-	@PrimaryKeyJoinColumn(name="bookid") 
+	@JoinColumn(name="bookid") 
 	public BookDetail getBookDetail() {
 		return bookDetail;
 	}

@@ -17,6 +17,20 @@ import com.bear.bookonline.user.service.UserRegistServiceImpl;
 public class UserRegistController {
 	@Resource
 	private UserRegistServiceImpl userRegistServiceImpl;
+	/**
+	 * 管理员注册  
+	 * 先获取到数据库中的管理员信息，存到userList列表中
+	 * 再获取到注册界面管理员输入的username 、password、tel、address、email 
+	 * 如果和数据库中数据一致，则返回到登录界面
+	 *否则将新输入的数据存到数据库中保存，返回到登录界面
+	 * @param model
+	 * @param name
+	 * @param pwd
+	 * @param tel
+	 * @param address
+	 * @param email
+	 * @return
+	 */
 	@RequestMapping("saveuser")
 	public String addUser(Model model,@RequestParam("username") String name,@RequestParam("password") String pwd,
 			@RequestParam("tel") String tel,@RequestParam("address") String address,

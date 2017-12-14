@@ -14,10 +14,13 @@ import com.bear.bookonline.entity.Admin;
 @Transactional
 public class AdminRegistServiceImpl {
 	@Resource
+	//将dao层获取到的数据库信息注入给sevice层
 	private AdminRegistDaoImpl adminRegistDaoImpl;
+	//调用dao层的方法将管理员信息存储到列表中
 	public List<Admin>listAllAdmin(){
 		return this.adminRegistDaoImpl.findAllAdmin();
 	}
+	//调用dao层的方法保存管理员信息
 	public void saveAdmin(Admin admin) {
 		this.adminRegistDaoImpl.saveAdmin(admin);
 	}
